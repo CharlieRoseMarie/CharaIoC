@@ -33,6 +33,19 @@ namespace CharaIoC.UnitTest.IoC.Tests
         }
 
         [TestClass]
+        public class RegisterSpecificTypeTest : CharaIoCContainerTest
+        {
+            [TestMethod]
+            public void SimpleExample_FunctionsCorrectly()
+            {
+                TestIoc.RegisterType<IDummy, DummyClasses>();
+                var result = TestIoc.Resolve<IDummy>();
+                Assert.IsNotNull(result);
+                Assert.IsInstanceOfType(result, typeof(DummyClasses));
+            }
+        }
+
+        [TestClass]
         public class ResolveTest : CharaIoCContainerTest
         {
             [TestMethod]

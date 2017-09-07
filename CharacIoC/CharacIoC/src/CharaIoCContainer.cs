@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Text;
 using CharacIoC.Interfaces;
 using CharacIoC.src.Exceptions;
 
@@ -21,11 +20,11 @@ namespace CharacIoC
             _iocDict[typeof(T)] = instance;
         }
 
-        public void RegisterType<T, TChild>() 
-            where T : class 
-            where TChild : T
+        public void RegisterType<T, TChild>()
+            where T : class
+            where TChild : T, new()
         {
-            var instance = Activator.CreateInstance<TChild>();
+            var instance = new TChild();
             var type = typeof(T);
             _iocDict[type] = instance;
         }
