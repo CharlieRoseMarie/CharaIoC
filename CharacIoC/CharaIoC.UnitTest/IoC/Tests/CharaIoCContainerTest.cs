@@ -1,7 +1,6 @@
-﻿using System;
-using CharacIoC;
+﻿using CharacIoC;
+using CharacIoC.Exceptions;
 using CharacIoC.Interfaces;
-using CharacIoC.src.Exceptions;
 using CharaIoC.UnitTest.IoC.Dummies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

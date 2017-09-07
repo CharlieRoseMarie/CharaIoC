@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using CharacIoC.Interfaces;
-using CharacIoC.src.Exceptions;
+using CharacIoC.Exceptions;
 
 namespace CharacIoC
 {
