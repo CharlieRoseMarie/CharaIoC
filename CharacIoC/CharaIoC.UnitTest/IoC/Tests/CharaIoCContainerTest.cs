@@ -23,11 +23,11 @@ namespace CharaIoC.UnitTest.IoC.Tests
             [TestMethod]
             public void SimpleExample_FunctionsCorrectly()
             {
-                var dummy = new DummyClasses();
+                var dummy = new DummyClass();
                 TestIoc.RegisterInstance(dummy);
-                var result = TestIoc.Resolve<DummyClasses>();
+                var result = TestIoc.Resolve<DummyClass>();
                 Assert.IsNotNull(result);
-                Assert.IsInstanceOfType(result, typeof(DummyClasses));
+                Assert.IsInstanceOfType(result, typeof(DummyClass));
             }
         }
 
@@ -37,10 +37,19 @@ namespace CharaIoC.UnitTest.IoC.Tests
             [TestMethod]
             public void SimpleExample_FunctionsCorrectly()
             {
-                TestIoc.RegisterType<IDummy, DummyClasses>();
+                TestIoc.RegisterType<IDummy, DummyClass>();
                 var result = TestIoc.Resolve<IDummy>();
                 Assert.IsNotNull(result);
-                Assert.IsInstanceOfType(result, typeof(DummyClasses));
+                Assert.IsInstanceOfType(result, typeof(DummyClass));
+            }
+
+            [TestMethod]
+            public void CanRegisterTypeWithNonParamterlessConstructor_Succeeeds()
+            {
+                TestIoc.RegisterType<IDummy, NonEmptyConstructorDummy>(() => new NonEmptyConstructorDummy(5));
+                var result = TestIoc.Resolve<IDummy>();
+                Assert.IsNotNull(result);
+                Assert.IsInstanceOfType(result, typeof(NonEmptyConstructorDummy));
             }
         }
 

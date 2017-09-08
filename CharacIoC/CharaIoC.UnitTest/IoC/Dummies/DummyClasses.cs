@@ -4,7 +4,7 @@
     {
     }
 
-    internal class DummyClasses : IDummy
+    internal class DummyClass : IDummy
     {
     }
 

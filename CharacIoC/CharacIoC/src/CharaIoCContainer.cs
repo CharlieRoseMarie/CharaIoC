@@ -29,6 +29,12 @@ namespace CharacIoC
             _iocDict[type] = instance;
         }
 
+        public void RegisterType<T, TChild>(Func<TChild> creation) where T : class where TChild : T
+        {
+            var instance = creation.Invoke();
+            _iocDict[typeof(T)] = instance;
+        }
+
         public T Resolve<T>() where T : class
         {
             var type = typeof(T);
